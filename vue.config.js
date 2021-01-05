@@ -13,7 +13,7 @@ module.exports = {
       errors: true
     },
     proxy: {
-      '/api/': { target: 'http://192.168.38.14:98/' }
+      '/api/': { target: 'http://192.168.1.49:98/' }//泰强本地
     }
   },
 
@@ -62,7 +62,7 @@ module.exports = {
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'scss',
-      patterns: []
+      patterns: [path.resolve(__dirname, './src/assets/sass/*.scss')]
     }
   }
 }
