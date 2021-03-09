@@ -13,7 +13,7 @@ module.exports = {
       errors: true
     },
     proxy: {
-      '/api/': { target: 'http://192.168.1.49:98/' }//泰强本地
+      '/api/': { target: process.env.API_BASE_URL }
     }
   },
 

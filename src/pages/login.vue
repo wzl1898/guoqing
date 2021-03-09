@@ -1,15 +1,16 @@
 <script>
 // import Layout from '@layouts/loginLayout'
 import { authMethods, stateRoutingMethods } from '@store/helpers'
-import appConfig from '@src/app.config'
 // eslint-disable-next-line
 import store from '@store'
 import loaderRouting from '@pages/loaderRouting'
 
+import { getProjectTitle } from '@utils/'
+
 export default {
   page: {
     title: '登录',
-    meta: [{ name: 'description', content: `登录到 ${appConfig.title}` }]
+    meta: [{ name: 'description', content: `登录到 ${getProjectTitle()}` }]
   },
   // components: { Layout },
   data () {
@@ -84,7 +85,7 @@ export default {
               src="@assets/images/logo.png"
               alt="logo"
             >
-            <span class="text">内陆水域濒危物种救护与珍稀物种繁育智能化平台</span>
+            <span class="text">getProjectTitle()</span>
           </div>
         </el-row>
         <el-form-item>
@@ -225,7 +226,7 @@ export default {
     width: 420px;
     height: 55px;
 
-    >>> .el-input__prefix {
+    ::v-deep .el-input__prefix {
       margin: 0 10px;
 
       .prefix {
@@ -233,7 +234,7 @@ export default {
       }
     }
 
-    >>> .el-input__inner {
+    ::v-deep .el-input__inner {
       height: 55px;
       padding-left: 50px;
       line-height: 55px;
@@ -245,13 +246,13 @@ export default {
       // border-color: $dark-color-border-color;
     }
 
-    >>> input:-webkit-autofill {
+    ::v-deep input:-webkit-autofill {
       box-shadow: 0 0 0 1000px $dark-color-background-input inset !important;
       -webkit-text-fill-color: $tint-color;
     }
 
     // TODO: chrome浏览器表单自动填充默认样式 未解决
-    >>> .el-input__inner:-webkit-autofill {
+    ::v-deep .el-input__inner:-webkit-autofill {
       // background-color: rgba(3, 81, 145, 0.5) !important;
       // color: $tint-color !important;
       box-shadow: 0 0 0 1000px rgb(4, 97, 172) inset !important;

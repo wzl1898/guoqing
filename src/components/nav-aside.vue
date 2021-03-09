@@ -1,6 +1,8 @@
 <script>
 import BaseIcon from '@components/_base-icon'
 import { systemLog } from '@api/system'
+import { getProjectTitle } from '@utils/'
+
 export default {
   components: {
     BaseIcon
@@ -14,6 +16,15 @@ export default {
   data () {
     return {
       // routingMsg: '',
+    }
+  },
+  computed: {
+    projectTitle () {
+      return getProjectTitle()
+    },
+    userName () {
+      const authInfo = JSON.parse(localStorage.getItem('auth.currentUser'))
+      return authInfo.name
     }
   },
   methods: {
@@ -37,7 +48,6 @@ export default {
   <div
     v-if="routingMsg !== ''"
     width="15vw"
-    class="bg-color-box"
   >
     <el-menu
       :default-active="$route.path"
@@ -47,6 +57,19 @@ export default {
       @open="handleOpen"
       @close="handleClose"
     >
+      <li class="logo_container">
+        <el-image
+          class="logo_container_image"
+          :src="require('@assets/images/logo.png')"
+        />
+        <p class="logo_container_title">
+          <span>{{ projectTitle }}</span>
+          <span> {{ userName }}</span>
+        </p>
+        <el-button size="small">
+          退出系统
+        </el-button>
+      </li>
       <el-submenu
         v-for="(item, index) in routingMsg"
         :key="index"
@@ -88,9 +111,23 @@ export default {
   background: $dark-color-background;
   border-right: none;
 
-  .elSubmenu :hover {
-    background: $dark-color-hover-background;
+  ::v-deep .el-submenu__title:hover,
+  .el-submenu__title:focus {
+    background-color: $dark-color-hover-background;
   }
+
+  ::v-deep .el-menu {
+    background-color: $dark-color-hover-aside;
+
+    .el-menu-item:hover,
+    .el-menu-item:focus {
+      background-color: $dark-color-hover-background;
+    }
+  }
+
+  // .elSubmenu :hover {
+  //   background: $dark-color-hover-background;
+  // }
 
   .menuColor {
     color: $tint-color;
@@ -98,15 +135,41 @@ export default {
 
   .elMenuItem {
     color: $tint-color;
-    background: $dark-color-hover-background;
-
-    &:hover {
-      background: $dark-color-hover-aside;
-    }
   }
 
   .elMenuItem.is-active {
-    color: $tint-color-hover-header;
+    position: relative;
+    color: $tint-color-background-header;
+    background-color: $dark-color-hover-background;
+
+    &::after {
+      position: absolute;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      content: '';
+      background-color: $tint-color-background-header;
+    }
+  }
+}
+
+.logo_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &_image {
+    width: 50%;
+    height: 50%;
+  }
+
+  &_title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: $tint-color-background-header;
   }
 }
 </style>

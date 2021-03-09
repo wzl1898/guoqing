@@ -2,6 +2,8 @@
 import { authComputed } from '@store/helpers'
 import NavBarRoutes from './nav-bar-routes'
 import { mapGetters } from 'vuex'
+import { getProjectTitle } from '@utils/'
+
 export default {
   components: { NavBarRoutes },
   props: {
@@ -43,6 +45,9 @@ export default {
     ...mapGetters('auth', ['currentUser']),
     currentNav () {
       return this.$route.meta.nav
+    },
+    projectTitle () {
+      return getProjectTitle()
     }
   },
   watch: {
@@ -86,7 +91,7 @@ export default {
         src="@assets/images/logo.png"
         alt="logo"
       >
-      <span class="logo">内陆水域濒危物种救护与珍稀物种繁育智能化平台</span>
+      <span class="logo">{{ projectTitle }}</span>
       <el-menu
         :default-active="currentNav"
         class="el-menu-demo nav_bar"
@@ -178,14 +183,11 @@ export default {
 
 .nav_bar {
   background-color: $dark-color-background;
-}
 
-.el_menu_item:hover {
-  background: $dark-color-hover-background !important;
-}
-
-.el_menu_item:focus {
-  background: $dark-color-hover-background !important;
+  ::v-deep .el-menu-item:not(.is-disabled):hover,
+  .el-menu-item:not(.is-disabled):focus {
+    background-color: $dark-color-hover-background;
+  }
 }
 
 .logo {

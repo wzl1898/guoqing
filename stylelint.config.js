@@ -9,6 +9,11 @@ module.exports = {
     'stylelint-config-recommended-scss'],
   rules: {
     'max-nesting-depth': 4,
-    'no-descending-specificity': null
+    'no-descending-specificity': null,
+    'selector-pseudo-element-no-unknown': [true,
+      {
+        ignorePseudoElements: ['/^v-/', 'deep']
+      }
+    ]
   }
 }
