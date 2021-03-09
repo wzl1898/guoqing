@@ -2,6 +2,7 @@
 import BaseIcon from '@components/_base-icon'
 import { systemLog } from '@api/system'
 import { getProjectTitle } from '@utils/'
+import { mapActions } from 'vuex'
 
 export default {
   components: {
@@ -39,7 +40,18 @@ export default {
       systemLog(params).then((res) => {
         // console.log(res)
       })
-    }
+    },
+    /**
+     * @event: click
+     * 退出系统
+     */
+    handleClickLogOut () {
+      this.logOut()
+      this.$router.push({
+        name: 'login'
+      })
+    },
+    ...mapActions('auth', ['logOut'])
   }
 }
 </script>
@@ -63,10 +75,13 @@ export default {
           :src="require('@assets/images/logo.png')"
         />
         <p class="logo_container_title">
-          <span>{{ projectTitle }}</span>
+          <span style=" margin-bottom: 6px; font-size: 16px;">{{ projectTitle }}</span>
           <span> {{ userName }}</span>
         </p>
-        <el-button size="small">
+        <el-button
+          size="small"
+          @click="handleClickLogOut"
+        >
           退出系统
         </el-button>
       </li>
@@ -170,6 +185,11 @@ export default {
     font-size: 14px;
     font-weight: 500;
     color: $tint-color-background-header;
+  }
+
+  ::v-deep .el-button {
+    color: $tint-color-background-header;
+    background-color: transparent;
   }
 }
 </style>

@@ -25,6 +25,9 @@ export default {
     }
   },
   computed: {
+    projectTitle () {
+      return getProjectTitle()
+    },
     buildTime () {
       return '构建时间: ' + process.env.VUE_APP_BUILD_TIME
     },
@@ -55,7 +58,9 @@ export default {
           // 登录成功添加路由
           loaderRouting()
           // TODO: FALITURE CASE
-          this.$router.push('/enterprise-information-management/basic-information/')
+          this.$router.push({
+            name: 'guide'
+          })
           // this.$router.push(this.$route.query.redirectFrom || { path: '/chart_editor/index/' })
         })
       } catch (error) {
@@ -85,7 +90,7 @@ export default {
               src="@assets/images/logo.png"
               alt="logo"
             >
-            <span class="text">getProjectTitle()</span>
+            <span class="text">{{ projectTitle }}</span>
           </div>
         </el-row>
         <el-form-item>

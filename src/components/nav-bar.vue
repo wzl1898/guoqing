@@ -191,6 +191,8 @@ export default {
 }
 
 .logo {
+  display: inline-block;
+  min-width: 110px;
   padding: 5px 10px;
   font-size: 20px;
   color: $tint-color;

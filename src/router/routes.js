@@ -65,6 +65,14 @@ export default [
         props: (route) => ({
           user: store.state.auth.currentUser || {}
         })
+      },
+      {
+        path: '/guide_pages',
+        name: 'guide',
+        component: () => lazyLoadView(import('@pages/guide_pages')),
+        meta: {
+          authRequired: true
+        }
       }
     ]
   },

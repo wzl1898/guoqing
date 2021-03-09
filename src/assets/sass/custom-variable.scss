@@ -12,3 +12,7 @@ $tint-color: #eee;
 $tint-color-background-header: #fff;
 $tint-color-header: #409eff;
 $tint-color-hover-header: #167ff0;
+
+@function circle-width($width) {
+  @return $width / 25.56 + vw;
+}
