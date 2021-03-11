@@ -2,10 +2,6 @@
 import { getMenuTreeTable, deleteMenu } from '@api/system'
 import layout from '@components/layout'
 export default {
-  page: {
-    title: '菜单管理',
-    meta: [{ name: 'Menucontrol' }]
-  },
   components: {
     layout
   },

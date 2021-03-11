@@ -4,10 +4,6 @@ import { createMenu, getMenuTreeTable } from '@api/system'
 
 export default {
   components: { treeFilter },
-  page: {
-    title: '添加菜单',
-    meta: [{ name: 'menuadd' }]
-  },
   data () {
     return {
       // TODO: 等待后台新增一个用于接收 "vue路由" 的字段

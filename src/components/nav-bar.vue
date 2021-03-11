@@ -188,6 +188,10 @@ export default {
   .el-menu-item:not(.is-disabled):focus {
     background-color: $dark-color-hover-background;
   }
+
+  ::v-deep .el-menu.el-menu--horizontal {
+    border-bottom: none;
+  }
 }
 
 .logo {

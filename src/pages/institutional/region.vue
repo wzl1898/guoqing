@@ -3,10 +3,6 @@ import layout from '@components/layout'
 import { getRegion, deleteRegion } from '@api/institutional'
 import { loadingModel } from '@utils/modelFunc'
 export default {
-  page: {
-    title: '区域管理',
-    meta: [{ name: 'Region' }]
-  },
   components: {
     layout
   },

@@ -6,10 +6,6 @@ import { loadingModel } from '@utils/modelFunc'
 
 export default {
   components: { treeFilter },
-  page: {
-    title: '添加区域',
-    meta: [{ name: 'regionadd' }]
-  },
   data () {
     return {
       ruleForm: {

@@ -9,10 +9,6 @@ export default {
       required: true
     }
   },
-  page: {
-    title: '修改菜单',
-    meta: [{ name: 'menuupdata' }]
-  },
   data () {
     return {
       ruleForm: {

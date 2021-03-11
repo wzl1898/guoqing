@@ -4,10 +4,6 @@ import layout from '@components/layout'
 import { loadingModel } from '@utils/modelFunc'
 
 export default {
-  page: {
-    title: '机构管理',
-    meta: [{ name: 'Institutional' }]
-  },
   components: {
     layout
   },

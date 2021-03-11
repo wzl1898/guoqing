@@ -13,6 +13,11 @@ $tint-color-background-header: #fff;
 $tint-color-header: #409eff;
 $tint-color-hover-header: #167ff0;
 
+/* 环责险项目内容颜色变量 */
+$eli-text-color: #32325d;
+$eli-prompt-color: #8898aa;
+$eli-title-color: #525f7f;
+
 @function circle-width($width) {
   @return $width / 25.56 + vw;
 }

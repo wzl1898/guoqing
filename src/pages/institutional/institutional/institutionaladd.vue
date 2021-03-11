@@ -13,10 +13,6 @@ import {
 } from '@api/institutional'
 export default {
   components: { treeFilter, regionTreeFilter },
-  page: {
-    title: '添加机构',
-    meta: [{ name: 'Institutionaladd' }]
-  },
   data () {
     return {
       /*

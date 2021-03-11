@@ -20,10 +20,6 @@ export default {
       required: true
     }
   },
-  page: {
-    title: '修改机构',
-    meta: [{ name: 'Institutionalupdata' }]
-  },
   data () {
     return {
       ruleForm: {

@@ -9,6 +9,7 @@ import ECharts from 'vue-echarts' // 在 webpack 环境下指向 components/ECha
 import 'echarts'
 
 import './components/_globals'
+import 'reset-css'
 import 'normalize.css'
 
 Vue.config.productionTip = false

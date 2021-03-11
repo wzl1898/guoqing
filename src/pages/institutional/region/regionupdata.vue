@@ -17,10 +17,6 @@ export default {
       required: true
     }
   },
-  page: {
-    title: '修改区域',
-    meta: [{ name: 'regionupdata' }]
-  },
   data () {
     return {
       ruleForm: {
