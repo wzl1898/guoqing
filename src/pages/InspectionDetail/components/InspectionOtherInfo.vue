@@ -2,6 +2,7 @@
   <BasicInfoCard title="其他与环境风险相关的资料">
     <IntroductionList
       :introduction-info="otherInfoLabel"
+      is-hover
       @click-item="handleClickResportItem"
     />
   </BasicInfoCard>

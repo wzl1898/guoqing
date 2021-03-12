@@ -6,6 +6,7 @@
       class="list_container_item"
       :label="item.label"
       :value="item.value"
+      :is-hover="isHover"
       @click.native="handleClickItem(item)"
     />
   </div>
@@ -23,6 +24,10 @@ export default {
     introductionInfo: {
       type: Array,
       required: true
+    },
+    isHover: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {

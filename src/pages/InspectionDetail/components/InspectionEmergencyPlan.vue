@@ -2,6 +2,7 @@
   <BasicInfoCard title="突发环境事件应急预案">
     <IntroductionList
       :introduction-info="planInfoLabel"
+      is-hover
       @click-item="handleClickResportItem"
     />
   </BasicInfoCard>

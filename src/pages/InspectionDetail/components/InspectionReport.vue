@@ -2,6 +2,7 @@
   <BasicInfoCard title="企业环境影响评价报告书">
     <IntroductionList
       :introduction-info="reportInfoLable"
+      is-hover
       @click-item="handleClickResportItem"
     />
   </BasicInfoCard>

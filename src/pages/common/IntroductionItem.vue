@@ -1,5 +1,5 @@
 <template>
-  <div class="item_container">
+  <div :class="['item_container', hasHover]">
     <div class="item_container_line" />
     <p class="item_container_label">
       {{ label }}
@@ -22,6 +22,15 @@ export default {
     value: {
       type: [String, Number],
       default: ''
+    },
+    isHover: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    hasHover () {
+      return this.isHover ? 'hover_icon' : ''
     }
   }
 }
@@ -36,7 +45,7 @@ export default {
   cursor: pointer;
   border-bottom: 2px solid #f4f4f4;
 
-  &:hover &_icon {
+  &.hover_icon:hover &_icon {
     display: block;
   }
 
