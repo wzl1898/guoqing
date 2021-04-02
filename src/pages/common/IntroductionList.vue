@@ -38,6 +38,9 @@ export default {
      */
     handleClickItem (item) {
       console.log(item)
+      console.log(item)
+      console.log(item)
+      console.log(item)
       this.$emit('click-item', item)
     }
   }
