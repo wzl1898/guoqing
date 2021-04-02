@@ -37,6 +37,7 @@ export default {
      * @param {object} item 点击项的信息
      */
     handleClickItem (item) {
+      console.log(item)
       this.$emit('click-item', item)
     }
   }

@@ -7,7 +7,11 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "//": "https://github.com/vuejs/vue-cli/issues/3065#issuecomment-454373989",
-    "lint:style": "stylelint --fix \"src/**/*.{vue,css,scss}\""
+    "lint:style": "stylelint --fix \"src/**/*.{vue,css,scss}\"",
+    "lint:eslint": "eslint --fix",
+    "lint:markdownlint": "markdownlint",
+    "lint:prettier": "prettier --write --loglevel warn",
+    "lint:stylelint": "stylelint --fix \"src/**/*.{vue,scss}\""
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
@@ -56,12 +60,6 @@
     "cross-env": "5.2.x"
   },
   "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "src/**/*.{js,vue}": [
-      "eslint --fix",
-      "git add"
-    ]
+    "pre-commit": "cross-env PRE_COMMIT=true lint-staged"
   }
 }
