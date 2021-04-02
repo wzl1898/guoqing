@@ -51,6 +51,17 @@
     "stylelint-webpack-plugin": "^2.0.0",
     "vue-cli-plugin-style-resources-loader": "~0.1.4",
     "vue-template-compiler": "^2.6.11",
-    "webpack-deadcode-plugin": "^0.1.12"
+    "webpack-deadcode-plugin": "^0.1.12",
+    "lint-staged": "8.1.x",
+    "cross-env": "5.2.x"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "src/**/*.{js,vue}": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
