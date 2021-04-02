@@ -41,6 +41,8 @@ export default {
       console.log(item)
       console.log(item)
       console.log(item)
+      console.log(item)
+      console.log(item)
       this.$emit('click-item', item)
     }
   }
