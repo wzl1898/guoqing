@@ -33,18 +33,7 @@ module.exports = {
     resolve: {
       alias: {
         // Alias @ to /src folder for ES/TS imports
-        '@': resolve('/src'),
-        '@src': resolve('src/'),
-        '@api': resolve('src/api'),
-        '@assets': resolve('src/assets/'),
-        '@components': resolve('src/components/'),
-        '@router': resolve('src/router'),
-        '@layouts': resolve('src/router/layouts/'),
-        '@pages': resolve('src/pages/'),
-        '@utils': resolve('src/utils/'),
-        '@store': resolve('src/store'),
-        '@customStyle': resolve('src/assets/sass/custom-variable.scss'),
-        '@design': resolve('src/design/index.scss')
+        '@': resolve('/src')
       }
     }
   },
