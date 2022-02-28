@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { Message } from 'element-ui'
-import store from '@src/store/index'
+// import store from '@src/store/index'
 // import { getToken } from '@utils/auth'
 
 // 请求超时时间
@@ -115,12 +115,12 @@ export default request
 function handleMsgCode (data, config) {
   // access_token 过期，需要 refresh
   if (data.msgCode === -10005) {
-    return refreshSingleton.create().then((user) => {
-      // 将之前的 'Access-Token'换成最新的再次请求
-      config.headers['Access-Token'] =
-        request.defaults.headers.common['Access-Token']
-      return request(config)
-    })
+    // return refreshSingleton.create().then((user) => {
+    //   // 将之前的 'Access-Token'换成最新的再次请求
+    //   config.headers['Access-Token'] =
+    //     request.defaults.headers.common['Access-Token']
+    //   return request(config)
+    // })
   }
   // refresh_token 过期，需要重新登录，不显示提示
   if (data.msgCode !== -10014) {
@@ -130,19 +130,19 @@ function handleMsgCode (data, config) {
 }
 
 // 单例模式 refresh Promise
-class refreshSingleton {
-  static create () {
-    if (!refreshSingleton.instance) {
-      refreshSingleton.instance = store
-        .dispatch('auth/refresh')
-        .then((_) => {
-          refreshSingleton.instance = null
-        })
-        .catch((error) => {
-          refreshSingleton.instance = null
-          return Promise.reject(error)
-        })
-    }
-    return refreshSingleton.instance
-  }
-}
+// class refreshSingleton {
+//   static create () {
+//     if (!refreshSingleton.instance) {
+//       refreshSingleton.instance = store
+//         .dispatch('auth/refresh')
+//         .then((_) => {
+//           refreshSingleton.instance = null
+//         })
+//         .catch((error) => {
+//           refreshSingleton.instance = null
+//           return Promise.reject(error)
+//         })
+//     }
+//     return refreshSingleton.instance
+//   }
+// }
