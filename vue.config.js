@@ -6,7 +6,7 @@ function resolve (dir) {
 }
 module.exports = {
   productionSourceMap: false,
-
+  lintOnSave: false,
   devServer: {
     overlay: {
       warnings: false,

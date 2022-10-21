@@ -6,3 +6,11 @@
 //   newList.push(barrageInfo)
 //   commit(types.SET_BARRAGE_LIST, newList)
 // }
+export default {
+  setUser(context, val){
+    context.commit("SETUSER", val);
+  },
+  setToken(context, val){
+    context.commit("SETTOKEN", val);
+  }
+}

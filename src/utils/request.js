@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { Message } from 'element-ui'
-// import store from '@src/store/index'
+import { Notify } from 'vant'
+import store from '../store'
 // import { getToken } from '@utils/auth'
 
 // 请求超时时间
@@ -8,7 +8,7 @@ import { Message } from 'element-ui'
 const TIMEOUT = 3000000 // TODO /api/table/searchData 接口请求需较长时间，设置3000000与后端对应
 // 创建 axios 实例
 export const request = axios.create({
-  baseURL: '/', // api的base_url
+  baseURL: 'http://112.111.0.102:12384/api', // api的base_url
   timeout: TIMEOUT,
   validateStatus: function (status) {
     return status < 500 // response status 不在范围内直接 reject
@@ -25,6 +25,7 @@ export const silenceRequest = axios.create({
 
 // request拦截器
 const requestInterceptor = request.interceptors.request.use(
+
   (request) => {
     // 防止 IE 缓存 get 请求
     if (request.method === 'get') {
@@ -44,11 +45,15 @@ const requestInterceptor = request.interceptors.request.use(
         .slice(0, -5)
         .replace('T', ' ')
     }
+    if (store.state.token !== "")
+    {
+        request.headers['Access-Token'] = store.state.token.access_token;
+        console.info("config");
+    }
     return request
   },
   (error) => {
-    Message.error(`网络错误: ${error.message}`)
-    // console.log(error)
+    Notify({type: 'danger', message:`网络错误: ${error.message}` })
     Promise.reject(error)
   }
 )
@@ -60,7 +65,7 @@ request.interceptors.response.use(
   (response) => {
     const { config, status, data } = response
     if (status !== 200) {
-      Message.error(`网络错误, 状态码:${status}`)
+      Notify({type: 'danger', message: `网络错误, 状态码:${status}`})
       return Promise.reject(new Error(`HTTP code is ${status}`))
     } else {
       // 这段代码用于模拟 -10005 和 -10014 的返回状态，已经测试通过
@@ -82,11 +87,11 @@ request.interceptors.response.use(
   },
   (error) => {
     if (error.code === 'ECONNABORTED') {
-      Message.warning('请求超时，请重试')
+      Notify({type: 'warning', message: '请求超时，请重试'})
     } else if (error.response && error.response.status) {
-      Message.error(`网络错误: 状态码 ${error.response.status}`)
+      Notify({type: 'danger', message: `网络错误: 状态码 ${error.response.status}`})
     } else {
-      Message.error(`网络错误: ${error.message}`)
+      Notify({type: 'danger', message: `网络错误: ${error.message}`})
     }
     return Promise.reject(error)
   }
@@ -124,7 +129,7 @@ function handleMsgCode (data, config) {
   }
   // refresh_token 过期，需要重新登录，不显示提示
   if (data.msgCode !== -10014) {
-    Message.error(data.errMsg)
+    Notify({type: 'danger', message: data.errMsg})
   }
   return Promise.reject(data)
 }
